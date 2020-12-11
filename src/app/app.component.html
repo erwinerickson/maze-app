@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="maze">
+    <div>
+      <div style="border: 3px solid black;text-align: center; padding: 20px;box-shadow: 5px 5px 14px #945252;">
+        <div style="text-align: center;width: fit-content;margin: auto;">
+          <div style="display:flex">
+            <table style="border-collapse: collapse;margin-left:30px">
+              <tr>
+                <td *ngFor="let width of widthIndicator" style="width:30px;height:30px;padding: unset">
+                  {{width}}
+                </td>
+              </tr> 
+            </table>
+            <span style="text-align: center;margin-top: 5px;padding:0 5px;">X - Axis</span>
+          </div>
+          <div style="display:flex">
+            <table style="border-collapse: collapse;">
+              <tr *ngFor="let height of heightIndicator">
+                <td style="width:30px;height:30px;padding: unset">
+                  {{height}}
+                </td>
+              </tr>
+            </table>
+            <canvas id='dynamicMap' (mousedown)="onClickCell($event)"></canvas>
+          </div>
+        </div>
+        <div style="text-align: left;">
+          <span style="text-align: center;margin-top: 5px;padding:0 5px;">Y - Axis</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="width:500px;margin:auto;padding-top:50px;">
+    <div style="display: flex;">
+      <span class="labelBox"> X : </span> <input type="number" [min]="1" id="xGrid" [(ngModel)]="xGrid" />
+      <span class="labelBox"> Y : </span> <input type="number" [min]="1" id="yGrid" [(ngModel)]="yGrid" />
+      <button style="padding: 0 10px;margin: 0px 20px;width:100px;" (click)="generateGrid();">Generate</button>
+      <button style="padding: 0 10px;margin: 0px 20px;width:100px;" (click)="removeWall();">No Wall</button>
+    </div>
+  </div>
+  <div style="width:500px;margin:auto;padding-top:20px;">
+    <div style="display: flex; padding-left: 12%;">
+      <span class="labelBox"> X : </span> <input type="number" [min]=1 [max]="xGrid" id="xStart" [(ngModel)]="xStart" />
+      <span class="labelBox"> Y : </span> <input type="number" [min]=1 [max]="yGrid" id="yStart" [(ngModel)]="yStart" />
+      <button style="padding: 0 10px;margin: 0px 20px;width:100px;" (click)="setStart();">SetStart</button>
+      <div class="square" style="background-color: green;"></div>
+    </div>
+  </div>
+  <div style="width:500px;margin:auto;padding-top:20px;">
+    <div style="display: flex; padding-left: 12%;">
+    <span class="labelBox"> X : </span> <input type="number" [min]=1 [max]="xGrid" id="xTarget" [(ngModel)]="xTarget" />
+    <span class="labelBox"> Y : </span> <input type="number" [min]=1 [max]="yGrid" id="yTarget" [(ngModel)]="yTarget" />
+    <button style="padding: 0 10px;margin: 0px 20px;width:100px;"  (click)="setTarget();">SetTarget</button>
+    <div class="square" style="background-color: red;"></div>
+  </div>
+  </div>
+  <div style="min-width:500px;text-align: center;padding:20px">
+  <button  style="width: 135px;height: 50px;" (click)="doBFS();">
+    <div style="display: inline-flex;">
+      <span style="padding: 0 15px;font-size: 20px;">
+        BFS
+      </span>
+      <div class="triangle-right"></div>
+    </div>
+  </button>
+  &nbsp;
+  &nbsp;
+  <button  style="width: 135px;height: 50px;" (click)="doDFS();">
+    <div style="display: inline-flex;">
+      <span style="padding: 0 15px;font-size: 20px;">
+        DFS
+      </span>
+      <div class="triangle-right"></div>
+    </div>
+  </button>
+
+
+  </div>
+</div>
+

@@ -1,0 +1,41 @@
+.container {
+    padding: 20px;
+    .maze {
+        justify-content: space-around;
+        margin: 0 auto;
+        display: flex;
+
+        .label {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    }
+
+    .square {
+        height: 30px;
+        width: 30px;
+        margin-top: 1px;
+    }
+
+    .labelBox {
+        font-weight: bold; 
+        width: 30px; 
+        font-size: 20px;
+        padding: 5px 5px 5px 10px;
+    }
+
+    .triangle-right {
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-left: 20px solid #555;
+        border-bottom: 10px solid transparent;
+    }
+
+    input {
+        width:70px;
+        text-align: center;
+        font-size:16px
+    }
+}
